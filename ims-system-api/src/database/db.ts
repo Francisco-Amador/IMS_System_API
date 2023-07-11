@@ -4,7 +4,7 @@ let db: any;
 
 if (!db) {
     db = new Pool({
-        user: "admin",
+        user: "postgres",
         password: "admin",
         host: "localhost",
         port: 5432,
