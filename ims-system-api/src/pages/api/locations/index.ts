@@ -3,8 +3,6 @@ import { notAllowedResponse } from "@/root";
 import { Locations } from "@/root/types";
 import { NextApiRequest, NextApiResponse } from "next";
 
-
-
 export async function createLocation(req: NextApiRequest, res: NextApiResponse) {
     try {
         const location = req.body as Locations;
@@ -16,9 +14,6 @@ export async function createLocation(req: NextApiRequest, res: NextApiResponse) 
         res.status(500).json({ error: "An error occurred while creating the location" });
     }
 }
-
-
-
 export async function getLocations( res: NextApiResponse) {
     try {
         const query = "SELECT * FROM ims_locations";
@@ -28,13 +23,6 @@ export async function getLocations( res: NextApiResponse) {
         res.status(500).json({ error: "An error occurred while creating the location" });
     }
 }
-
-
-
-
-
-
-
 const handlers = {
     POST: async (req: NextApiRequest, res: NextApiResponse) => await createLocation(req, res),
     GET: async (req: NextApiRequest, res: NextApiResponse) => await getLocations( res)
@@ -44,5 +32,3 @@ export default async function authorsController(req: NextApiRequest, res: NextAp
     const handler = handlers[method as keyof typeof handlers] || notAllowedResponse;
     return await handler(req, res);
 }
-
-
