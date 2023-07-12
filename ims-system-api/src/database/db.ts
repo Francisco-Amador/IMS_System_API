@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 
-let db: any;
+let db: any;//TODO: Add type
 
 if (!db) {
     db = new Pool({
